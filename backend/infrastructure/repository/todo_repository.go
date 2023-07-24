@@ -16,6 +16,7 @@ func NewTodoRepository(DB *sql.DB) *TodoRepository {
 }
 
 func (r *TodoRepository) Store(todo domain.Todo) (domain.Todo, error) {
+	// Never do this. You expose yourself to SQL injection attacks.
 	query := `
 		INSERT INTO todos (title, completed, created_at, updated_at)
 		VALUES ($1, $2, $3, $4)
