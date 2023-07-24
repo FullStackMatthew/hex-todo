@@ -3,12 +3,16 @@ services:
   db:
     image: postgres:latest
     container_name: hex-todo-db
+    # Because you're not setting the context, the dockerfile in the db folder is not used. Erasing.
     environment:
       POSTGRES_USER: your_user
       POSTGRES_PASSWORD: your_password
       POSTGRES_DB: your_database
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      # You can set the entry points scrips directly here
+      # no use for the dockerfile
+      - ./db/data/sql:/docker-entrypoint-initdb.d/
     ports:
       - "5432:5432"
   app: 
