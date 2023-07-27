@@ -13,11 +13,11 @@ all: build
 
 build:
 	@echo "Building $(APP_NAME)..."
-	$(GO) build -o $(APP_NAME) ./backend
+	cd backend && $(GO) build -o $(APP_NAME) ../backend
 
 run:
 	@echo "Starting $(APP_NAME)..."
-	$(GO) run ./backend
+	cd backend && $(GO) run ../backend
 
 clean:
 	@echo "Cleaning up..."
