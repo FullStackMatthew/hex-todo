@@ -26,7 +26,7 @@ clean:
 
 test:
 	@echo "Running tests..."
-	$(GO) test -v ./backend/...
+	cd backend && $(GO) test -v ./...
 
 docker-build:
 	@echo "Building Docker image..."
